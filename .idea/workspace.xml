@@ -21,7 +21,11 @@
       <file leaf-file-name="StochasticProcess.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StochasticProcess.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="361">
+=======
+            <state relative-caret-position="551">
+>>>>>>> 23b80ae099c2dd4badf3087090c76abf2a99d1e5
               <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
@@ -280,7 +284,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-9" y="-9" width="2418" height="1318" extended-state="7" />
+=======
+    <frame x="-9" y="-9" width="2418" height="1318" extended-state="6" />
+>>>>>>> 23b80ae099c2dd4badf3087090c76abf2a99d1e5
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17587516" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -339,6 +347,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StochasticProcess.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="361">
           <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
@@ -377,6 +386,9 @@
     <entry file="file://$PROJECT_DIR$/StochasticProcess.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
+=======
+        <state relative-caret-position="551">
+>>>>>>> 23b80ae099c2dd4badf3087090c76abf2a99d1e5
           <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
