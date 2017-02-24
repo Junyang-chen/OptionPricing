@@ -27,10 +27,44 @@ class OptionPricer(metaclass=ABCMeta):
     def CalcDelta(self):
         raise NotImplementedError
 
-class Optionpricerarugment(metaclass=ABCMeta):
+class Optionargument(metaclass=ABCMeta):
     s = None
     t2m = None
     r = None
     vol = None
     iscall = None
     strike = None
+
+class Vanillaoptionargument(Optionargument):
+    """
+    Vanillaoptionargument for european options and ameriacan optoins
+    """
+    def __init__(self, s=0, t2m=0, r=0, vol=0, iscall=True, strike=0):
+        """
+
+        Args:
+            s(float):       underlying price
+            t2m(float):     time to maturity
+            r(float):       annual interest rate
+            vol(float):     volatility
+            iscall(bool):
+            strike(float):  strike price
+        """
+        self.s = s
+        self.t2m = t2m
+        self.r = r
+        self.vol = vol
+        self.iscall = iscall
+        self.strike = strike
+
+
+class Europeanoptionpricer(OptionPricer):
+    """
+    Defined vanilla european option pricer
+    """
+
+    def __init__(self, optionargument):
+        self.optionargument = optionargument
+
+    def CalcOpotionPremium(self):
+        pass
