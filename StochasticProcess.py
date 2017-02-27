@@ -17,8 +17,12 @@ class StochasticProcessGenerator(metaclass=ABCMeta):
     _numofPoints = None
 
     @abstractclassmethod
-    def __init__(self):
-        pass
+    def __init__(self, timetoexp=1, mu=0, vol=1):
+        self._numofPoints = int(timetoexp*252)
+        self.timetoexp = timetoexp
+        self.mu = mu
+        self.vol = vol
+        self.dt = timetoexp/self._numofPoints
 
     @abstractclassmethod
     def generatePath(self):
@@ -29,14 +33,10 @@ class StochasticProcessGenerator(metaclass=ABCMeta):
         pass
 
 
-class BrownianMotionGenerator(StochasticProcessGenerator):
+class GeneralizedWienerProcessGenerator(StochasticProcessGenerator):
 
     def __init__(self, timetoexp=1, mu=0, vol=1):
-        self._numofPoints = int(timetoexp*252)
-        self.timetoexp = timetoexp
-        self.mu = mu
-        self.vol = vol
-        self.dt = timetoexp/self._numofPoints
+        super().__init__(timetoexp, mu, vol)
 
     def generatePath(self):
         initialseries = self.vol*np.random.normal(0, 1, self._numofPoints)*np.sqrt(self.dt) + self.dt * self.mu
@@ -56,11 +56,7 @@ class BrownianMotionGenerator(StochasticProcessGenerator):
 class GeometricBrownianMotionGenerator(StochasticProcessGenerator):
 
     def __init__(self, timetoexp=1, mu=0, vol=1):
-        self._numofPoints = int(timetoexp*252)
-        self.timetoexp = timetoexp
-        self.mu = mu
-        self.vol = vol
-        self.dt = timetoexp/self._numofPoints
+        super().__init__(timetoexp, mu, vol)
 
     def generatePath(self):
         initialseries = self.vol*np.random.normal(0, 1, self._numofPoints)*np.sqrt(self.dt)\
@@ -86,16 +82,16 @@ class GeometricBrownianMotionGenerator(StochasticProcessGenerator):
         return result
 
 if __name__ == '__main__':
-    brownianmotion = BrownianMotionGenerator(1, 0.3, 0.1)
+    brownianmotion = GeneralizedWienerProcessGenerator(1, 0.3, 1.5)
     onepath = brownianmotion.generatePath()
     fig, ax = plt.subplots(2,2)
-    onepath.plot(ax=ax[0,0], title='brownianmotion')
-    multiplepaths = brownianmotion.generatePaths(100)
-    multiplepaths.plot(ax=ax[0,1], title='brownianmotion multiple')
+    onepath.plot(ax=ax[0,0], title='GeneralizedWienerProcess')
+    multiplepaths = brownianmotion.generatePaths(10)
+    multiplepaths.plot(ax=ax[0,1], title='GeneralizedWienerProcess multiple')
 
     geometricbrownianmotion = GeometricBrownianMotionGenerator(1, 0.3, 0.1)
     onepath = geometricbrownianmotion.generatePath()
     onepath.plot(ax=ax[1, 0], title='geometricbrownianmotion')
-    multiplepaths = geometricbrownianmotion.generatePaths(100)
-    multiplepaths.plot(ax=ax[1,1], title='brownianmotion multiple')
+    multiplepaths = geometricbrownianmotion.generatePaths(10)
+    multiplepaths.plot(ax=ax[1,1], title='geometricbrownianmotion multiple')
     plt.show()
